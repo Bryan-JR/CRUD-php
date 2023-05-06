@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de personas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body id="cuerpo">
+
+    <nav class="bg-indigo-500">
+        <div class="container py-2 mx-auto px-10 flex flex-wrap items-center justify-between">
+            
+            <!-- BEGIN logo -->
+            <div  class="flex items-center">
+                <img src="../imagenes/logou2.png" class="h-14">
+                <h2 class="text-white">Universidad de Córdoba</h2>
+            </div>
+            <!-- END logo -->
+
+
+            <!-- ENG Botón responsive -->
+            <button id="bntResponsive" class="p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-white" data-collapse-toggle="mobile-menu" type="button"  aria-controls="mobile-menu" aria-expanded="false">
+                <svg id="iconOpen" class="text-white w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+                <svg id="iconClose" class="text-white hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </button>
+            <!-- END Botón responsive -->
+
+
+            <!-- BEGIN items adicionales -->
+            <div class="hidden md:block md:w-auto w-full " id="mobile-menu">
+                <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+                    <li>
+                        <a href="#" class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-white md:p-0 dark:text-white" aria-current="page">Home</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">About</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Services</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Pricing</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-2 pr-4 pl-3 text-white hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 ">Contact</a>
+                    </li>
+                </ul>
+              </div>
+            <!-- END items adicionales -->
+            
+            
+        </div>
+    </nav>
+
+    <nav class="md:bg-gray-800 bg-gray-500 p-1">
+        <div class="container mx-auto px-10 w-full">
+            <ul class="flex flex-col justify-center md:flex-row mt-1 text-xs md:text-sm">
+                <li>
+                    <a href="#" class="transition hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 
+                                      block py-2
+                                    text-gray-100 border-b border-gray-400 
+                                      hover:rounded-md text-sm 
+                                      hover:bg-gray-700 
+                                      hover:text-gray-200
+                                      md:border-0 md:mx-2 md:px-3" aria-current="page">Inicio</a>
+                </li>
+                <li>
+                    <a href="#" class="transition hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 
+                                        block py-2
+                                    text-gray-100 border-b border-gray-400 hover:rounded-md text-sm hover:bg-gray-700 hover:text-gray-200
+                                      md:border-0 md:mx-2 md:px-3" aria-current="page">Mis Cursos</a>
+                </li>
+                <li>
+                    <a href="#" class="transition hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300  
+                                        block py-2
+                                    text-gray-100 border-b border-gray-400 hover:rounded-md text-sm hover:bg-gray-700 hover:text-gray-200
+                                      md:border-0 md:mx-2 md:px-3" aria-current="page">Calificaciones</a>
+                </li>
+                <li>
+                    <a href="#" class="transition hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 
+                                        block py-2
+                                    text-gray-100 border-b border-gray-400 hover:rounded-md text-sm hover:bg-gray-700 hover:text-gray-200
+                                      md:border-0 md:mx-2 md:px-3" aria-current="page">Insignias</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container mx-auto px-10">
+
+        <h1 class="text-4xl text-center py-4">Registro de personas</h1>
+
+
+<form>
+
+    <div class="mb-6">
+      <label for="identificacion" class="block mb-2 text-sm font-medium text-gray-900 ">Identificación</label>
+      <input type="text" id="identificacion" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required>
+    </div>
+    
+    <div class="mb-6">
+      <label for="nombres" class="block mb-2 text-sm font-medium text-gray-900 ">Nombre Completo</label>
+      <input type="text" id="nombres" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required>
+    </div>
+
+    <div class="mb-6">
+        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Email</label>
+        <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required>
+    </div>
+    
+    <div class="mb-6">
+        <label for="fecha_nac" class="block mb-2 text-sm font-medium text-gray-900 ">Fecha de Nacimiento</label>
+        <input type="date" id="fecha_nac" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required>
+    </div>
+    
+    <div class="mb-6">
+        <label for="genero" class="block mb-2 text-sm font-medium text-gray-900 ">Genero</label>
+        <select name="genero" id="genero" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+
+        </select>        
+    </div>
+    <div class="mb-6">
+        <label for="programa" class="block mb-2 text-sm font-medium text-gray-900 ">Programa</label>
+        <select name="programa" id="programa" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+
+        </select>        
+    </div>
+    
+    <div class="mb-6">
+        <label for="observaciones" class="block mb-2 text-sm font-medium text-gray-900 ">Observaciones</label>
+        <textarea id="observaciones" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" ></textarea>   
+      </div>
+
+    
+    
+    <button id="btn-enviar" type="button" class="text-white bg-blue-700 mb-6 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Registrar</button>
+    <button id="btn-modificar" type="button" class="text-white bg-yellow-400 mb-6 hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-yellow-400 dark:hover:bg-yellow-600 dark:focus:ring-yellow-700" hidden>Modificar</button>
+
+  </form>
+
+    
+    <div class="relative py-6 overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left ">
+            <thead class="text-xs text-gray-100 uppercase bg-gray-50 dark:bg-gray-700">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Identificación
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Nombre Completo
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Email
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Fecha Nacimiento
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Genero
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Programa
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Observaciones
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        <span class="sr-only">Acciones</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="cuerpoTablas">
+            </tbody>
+        </table>
+    </div>
+
+  
+    </div>
+
+
+    <script src="js/app.js"></script>
+
+</body>
+</html>
